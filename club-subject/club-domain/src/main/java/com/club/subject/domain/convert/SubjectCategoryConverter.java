@@ -5,10 +5,14 @@ import com.club.subject.infra.basic.entity.SubjectCategory;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
+import java.util.List;
+
 @Mapper
 public interface SubjectCategoryConverter {
 
     SubjectCategoryConverter INSTANCE = Mappers.getMapper(SubjectCategoryConverter.class);
 
     SubjectCategory convertBoToCategory(SubjectCategoryBO subjectCateBO);
+
+    List<SubjectCategoryBO> convertToCategoryBOList(List<SubjectCategory> subjectCategory);
 }

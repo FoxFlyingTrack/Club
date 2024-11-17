@@ -11,39 +11,36 @@ public class Result<T> {
     private Boolean success;
 
     public static Result success() {
-        Result tResult = new Result<>();
-        tResult.setSuccess(true);
-        tResult.setCode(ResultCodeEnum.SUCCESS.getCode());
-        tResult.setMessage(ResultCodeEnum.SUCCESS.getMessage());
-        return tResult;
+        Result result = new Result();
+        result.setSuccess(true);
+        result.setCode(ResultCodeEnum.SUCCESS.getCode());
+        result.setMessage(ResultCodeEnum.SUCCESS.getMessage());
+        return result;
     }
 
-
-    public static <T> Result<T> success(T data) {
-        Result<T> tResult = new Result<>();
-        tResult.setSuccess(true);
-        tResult.setCode(ResultCodeEnum.SUCCESS.getCode());
-        tResult.setMessage(ResultCodeEnum.SUCCESS.getMessage());
-        tResult.setData(data);
-        return tResult;
+    public static <T> Result success(T data) {
+        Result result = new Result();
+        result.setSuccess(true);
+        result.setCode(ResultCodeEnum.SUCCESS.getCode());
+        result.setMessage(ResultCodeEnum.SUCCESS.getMessage());
+        result.setData(data);
+        return result;
     }
-
 
     public static Result fail() {
-        Result tResult = new Result<>();
-        tResult.setSuccess(false);
-        tResult.setCode(ResultCodeEnum.FAIL.getCode());
-        tResult.setMessage(ResultCodeEnum.FAIL.getMessage());
-        return tResult;
+        Result result = new Result();
+        result.setSuccess(false);
+        result.setCode(ResultCodeEnum.FAIL.getCode());
+        result.setMessage(ResultCodeEnum.FAIL.getMessage());
+        return result;
     }
 
-
-    public static <T> Result<T> fail(T data) {
-        Result<T> tResult = new Result<>();
-        tResult.setSuccess(false);
-        tResult.setCode(ResultCodeEnum.FAIL.getCode());
-        tResult.setMessage(ResultCodeEnum.FAIL.getMessage());
-        tResult.setData(data);
-        return tResult;
+    public static <T> Result fail(T data) {
+        Result result = new Result();
+        result.setSuccess(false);
+        result.setCode(ResultCodeEnum.FAIL.getCode());
+        result.setMessage(ResultCodeEnum.FAIL.getMessage());
+        result.setData(data);
+        return result;
     }
 }
