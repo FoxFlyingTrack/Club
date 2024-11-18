@@ -1,11 +1,11 @@
 package com.club.subject.infra.basic.service.impl;
 
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.club.subject.infra.basic.entity.SubjectCategory;
 import com.club.subject.infra.basic.mapper.SubjectCategoryDao;
 import com.club.subject.infra.basic.service.SubjectCategoryService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import com.alibaba.fastjson.JSON;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -17,23 +17,63 @@ import java.util.List;
  * @since 2023-10-01 21:50:05
  */
 @Service("subjectCategoryService")
-public class SubjectCategoryServiceImpl extends ServiceImpl<SubjectCategoryDao, SubjectCategory> implements SubjectCategoryService {
+@Slf4j
+public class SubjectCategoryServiceImpl implements SubjectCategoryService {
+
     @Resource
     private SubjectCategoryDao subjectCategoryDao;
 
+
+    /**
+     * 新增数据
+     *
+     * @param subjectCategory 实例对象
+     * @return 实例对象
+     */
+    @Override
+    public SubjectCategory insert(SubjectCategory subjectCategory) {
+        if(log.isInfoEnabled()){
+            log.info("SubjectCategoryController.add.subjectCategory:{}"
+                    , JSON.toJSONString(subjectCategory));
+        }
+        this.subjectCategoryDao.insert(subjectCategory);
+        return subjectCategory;
+    }
+
+    @Override
+    public SubjectCategory queryById(Long id) {
+        return this.subjectCategoryDao.queryById(id);
+    }
+
+    /**
+     * 修改数据
+     *
+     * @param subjectCategory 实例对象
+     * @return 实例对象
+     */
+    @Override
+    public int update(SubjectCategory subjectCategory) {
+        return this.subjectCategoryDao.update(subjectCategory);
+    }
+
+    /**
+     * 通过主键删除数据
+     *
+     * @param id 主键
+     * @return 是否成功
+     */
+    @Override
+    public boolean deleteById(Long id) {
+        return this.subjectCategoryDao.deleteById(id) > 0;
+    }
+
     @Override
     public List<SubjectCategory> queryCategory(SubjectCategory subjectCategory) {
-        LambdaQueryWrapper<SubjectCategory> subjectCategoryLambdaQueryWrapper = new LambdaQueryWrapper<>();
-        subjectCategoryLambdaQueryWrapper.eq(SubjectCategory::getIsDeleted, false);
-        if (subjectCategory.getParentId() != null) {
-            subjectCategoryLambdaQueryWrapper.eq(SubjectCategory::getParentId, subjectCategory.getParentId());
-        }
-        return this.list(subjectCategoryLambdaQueryWrapper);
+        return this.subjectCategoryDao.queryCategory(subjectCategory);
     }
 
     @Override
-    public Boolean delete(SubjectCategory subjectCategory) {
-        return subjectCategoryDao.deleteById(subjectCategory.getId()) > 0;
+    public Integer querySubjectCount(Long id) {
+        return this.subjectCategoryDao.querySubjectCount(id);
     }
-
 }

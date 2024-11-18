@@ -1,4 +1,4 @@
-package com.club.subject.appplication.convert;
+package com.club.subject.application.convert;
 
 import com.club.subject.domain.entity.SubjectCategoryBO;
 import com.club.subject.domain.entity.SubjectCategoryDTO;

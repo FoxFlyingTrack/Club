@@ -1,4 +1,4 @@
-package com.club.subject.appplication.convert;
+package com.club.subject.application.convert;
 
 import com.club.subject.domain.entity.SubjectCategoryBO;
 import com.club.subject.domain.entity.SubjectCategoryDTO;
@@ -8,7 +8,7 @@ import javax.annotation.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-11-17T21:02:22+0800",
+    date = "2024-11-17T22:23:11+0800",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 1.8.0_422 (Amazon.com Inc.)"
 )
 public class SubjectCategoryDTOConverterImpl implements SubjectCategoryDTOConverter {
